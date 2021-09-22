@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './services/products.service';
-import { tap } from 'rxjs/operators';
-import { Product } from './interfaces/product.interface';
-import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-products',
@@ -11,19 +7,9 @@ import { HttpClient } from '@angular/common/http'
 })
 export class ProductsComponent implements OnInit {
 
-  products!: Product[];
-
-  //llamar al metodo del servic
-  //inyectamos el servicio
-  constructor(private productSvc: ProductsService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.productSvc.getProducts()
-      .pipe(
-        tap((products: Product[]) => this.products = products)
-      )
-      .subscribe();
   }
 
-  
 }
